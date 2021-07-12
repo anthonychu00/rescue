@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pets</title>
+    <link type = "text/css" th:href="@{/css/main.css}" href = "/css/main.css" rel="stylesheet"/>
+</head>
+<body>
+    <div th:insert="~{navbar :: navbar}"></div>
+    <h2>Search</h2>
+    <form action = "#" th:action = "@{/results}" th:object = "${pet}" method = "post">
+        <table>
+            <tr>
+                <td>Date Arrived</td>
+                <td><input type = "date" th:field = "*{dateArrived}"/></td>
+                <td th:if="${#fields.hasErrors('dateArrived')}"
+                    th:errors = "*{dateArrived}">Date error</td>
+            </tr>
+            <tr>
+                <td>Animal Type:</td>
+                <td><input type = "text" th:field = "*{animalType}"/></td>
+                <td th:if = "${#fields.hasErrors('animalType')}"
+                    th:errors="*{animalType}">Animal type error</td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type = "number" th:field = "*{age}"/></td>
+                <td th:if = "${#fields.hasErrors('age')}"
+                    th:errors="*{age}">Age error</td>
+            </tr>
+            <tr>
+                <td><button type = "submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+
+
+    <div th:each="result: ${results}">
+        <p th:text = "${result.getDateArrived()}"></p>
+        <p th:text = "${result.getAnimalType()}"></p>
+        <p th:text = "${result.getAge()}"></p>
+    </div>
+
+</body>
+</html>

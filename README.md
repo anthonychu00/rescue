@@ -1,6 +1,6 @@
 # rescue
 
-Learning Spring Boot with a web application that lets you search a database of pets.
+Learning Spring Boot MVC with a web application that lets you search a database of pets. 
 
 Using: Spring Web, Thymeleaf, Spring Data with a local MySQL database
 

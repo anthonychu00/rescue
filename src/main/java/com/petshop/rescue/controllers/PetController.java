@@ -3,6 +3,7 @@ package com.petshop.rescue.controllers;
 import com.petshop.rescue.models.Pet;
 import com.petshop.rescue.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,7 @@ public class PetController implements WebMvcConfigurer {
 
     //autowire some adoption system?
     @Autowired
-    PetService petService;
+    private PetService petService;
 
     @GetMapping("/")
     public String showFormOrigin(Pet pet){
@@ -37,7 +38,8 @@ public class PetController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "pet-form";
         }
-        List<Pet> results = petService.findByAllFields(pet.getDateArrived(), pet.getAnimalType(), pet.getAge());
+        //List<Pet> results = petService.findByAllFields(pet.getAnimalType(), pet.getAge());
+        List<Pet> results = petService.findByAllFields(pet);
         model.addAttribute("results", results);
         return "pet-form";
     }

@@ -11,16 +11,14 @@
     <form action = "#" th:action = "@{/results}" th:object = "${pet}" method = "post">
         <table>
             <tr>
-                <td>Date Arrived</td>
-                <td><input type = "date" th:field = "*{dateArrived}"/></td>
-                <td th:if="${#fields.hasErrors('dateArrived')}"
-                    th:errors = "*{dateArrived}">Date error</td>
-            </tr>
-            <tr>
                 <td>Animal Type:</td>
-                <td><input type = "text" th:field = "*{animalType}"/></td>
-                <td th:if = "${#fields.hasErrors('animalType')}"
-                    th:errors="*{animalType}">Animal type error</td>
+                <td>
+                    <select th:field = "*{animalType}">
+                        <option th:value = "dog" th:text = "Dog"> </option>
+                        <option th:value = "cat" th:text = "Cat"> </option>
+                    </select>
+                </td>
+
             </tr>
             <tr>
                 <td>Age:</td>

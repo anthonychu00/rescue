@@ -5,9 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.criteria.Predicate;
-import java.util.List;
 
 @Repository
 public interface PetDAO extends PagingAndSortingRepository<Pet, Long> {
@@ -31,10 +29,4 @@ public interface PetDAO extends PagingAndSortingRepository<Pet, Long> {
             return predicate;
         };
     }
-    //Spring Data repositories parse the method name, using the criteria defined after
-    //"by" to  construct a query, with criteria separated by And and Or
-    List<Pet> findByAnimalTypeAndAge(String animalType, int age);
-
-    //@Query("SELECT p from pets p WHERE p.animalType = ?1")
-    List<Pet> findByAnimalType(String animalType);
 }
